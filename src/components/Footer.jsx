@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MessageCircle, Globe, Share2, Mail } from 'lucide-react';
-import mainLogo from '../assets/new-logo.png';
+import mainLogo from '../assets/site-logo.png';
 
 const Footer = () => {
   return (

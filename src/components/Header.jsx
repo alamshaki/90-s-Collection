@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Search, User, Menu, X, ChevronDown, Shirt, Scissors, Briefcase, Tag, Target, Star, Smile, Circle, Wind, Activity, Home, Grid, Heart } from 'lucide-react';
-import mainLogo from '../assets/new-logo.png';
+import mainLogo from '../assets/site-logo.png';
 import { categories } from '../data/products';
 
 const Header = () => {

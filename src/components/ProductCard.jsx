@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
             {product.name}
           </Link>
         </div>
-        <div className="flex flex-row items-center justify-between mt-auto gap-3">
+        <div className="flex flex-row items-center justify-between mt-3 gap-3">
           <span className="font-bold text-lg text-gray-900">₹{parseFloat(product.price).toFixed(2)}</span>
           <button 
             className="flex-1 bg-primary text-white hover:bg-primary-hover font-medium text-sm py-2 rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm max-w-[120px]"
