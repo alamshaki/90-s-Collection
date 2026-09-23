@@ -11,7 +11,7 @@ const Footer = () => {
           
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
-              <img src={mainLogo} alt="90's Men Logo" className="h-10 w-auto brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+              <img src={mainLogo} alt="90's Men Logo" className="h-14 w-auto brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
             </Link>
             <p className="text-gray-400 mb-6 max-w-sm text-sm leading-relaxed">
               Curated menswear focusing on fit, fabric, and timeless style. Elevate your everyday wardrobe.

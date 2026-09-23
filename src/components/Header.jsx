@@ -47,7 +47,7 @@ const Header = () => {
           {/* Logo and Mobile Hamburger Menu */}
           <div className="flex w-full md:w-auto justify-between items-center px-4 md:px-0">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <img src={mainLogo} alt="90's Men Logo" className="h-8 md:h-10 w-auto" />
+              <img src={mainLogo} alt="90's Men Logo" className="h-12 md:h-16 w-auto" />
             </Link>
             
             <button 

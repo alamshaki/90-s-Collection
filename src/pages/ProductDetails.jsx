@@ -129,22 +129,22 @@ const ProductDetails = () => {
             
             <div className="mb-10">
               <span className="block font-semibold text-gray-900 mb-4">Quantity</span>
-              <div className="flex border-2 border-gray-100 rounded-xl w-32 h-12 bg-white shadow-sm overflow-hidden">
-                <button className="w-10 flex items-center justify-center text-xl text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors" onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
-                <input type="number" className="flex-1 text-center font-bold text-base outline-none appearance-none bg-transparent border-x border-gray-100" value={quantity} readOnly />
-                <button className="w-10 flex items-center justify-center text-xl text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors" onClick={() => setQuantity(quantity + 1)}>+</button>
+              <div className="flex items-center border-2 border-gray-100 rounded-xl w-32 h-12 bg-white shadow-sm overflow-hidden">
+                <button className="w-10 h-full flex items-center justify-center text-xl text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors" onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
+                <div className="flex-1 h-full flex items-center justify-center font-bold text-base border-x border-gray-100">{quantity}</div>
+                <button className="w-10 h-full flex items-center justify-center text-xl text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors" onClick={() => setQuantity(quantity + 1)}>+</button>
               </div>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <button 
-                className="flex-[3] bg-gray-900 hover:bg-black text-white rounded-2xl h-14 flex items-center justify-center gap-3 font-semibold text-base transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5" 
+                className="flex-[3] bg-primary hover:bg-primary-hover text-white rounded-xl h-12 flex items-center justify-center gap-2 font-medium text-sm transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5" 
                 onClick={handleAddToCart}
               >
-                <ShoppingCart size={20} /> Add to Bag
+                <ShoppingCart size={18} /> Add To Cart
               </button>
-              <button className="flex-1 sm:flex-none sm:w-16 h-14 rounded-2xl border-2 border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-red-500 hover:text-red-500 hover:bg-red-50 transition-all hover:shadow-md group">
-                <Heart size={22} className="group-hover:fill-red-500 transition-colors" />
+              <button className="flex-1 sm:flex-none sm:w-14 h-12 rounded-xl border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary hover:bg-gray-50 transition-all hover:shadow-sm group">
+                <Heart size={20} className="group-hover:fill-primary transition-colors" />
               </button>
             </div>
             
