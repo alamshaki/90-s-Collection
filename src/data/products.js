@@ -78,6 +78,5 @@ export const categories = [
   "Tops",
   "Bottoms",
   "Outerwear",
-  "Shoes",
-  "Accessories"
+  "Activewear"
 ];

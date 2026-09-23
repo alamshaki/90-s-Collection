@@ -1,0 +1,11 @@
+TRUNCATE TABLE "product" RESTART IDENTITY;
+
+INSERT INTO "product" ("name", "price", "category", "image", "description", "isTrending", "createdAt", "updatedAt") VALUES
+('Essential Cotton Crewneck Tee', 28.00, 'Tops', 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800', 'A versatile, premium cotton crewneck tee with a tailored modern fit. Perfect for everyday wear.', true, NOW(), NOW()),
+('Tailored Fit Denim Jacket', 110.00, 'Outerwear', 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&q=80&w=800', 'Modern tailored denim jacket with subtle distressing. Features premium hardware and a sleek silhouette.', true, NOW(), NOW()),
+('Slim Tapered Chinos', 68.00, 'Bottoms', 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&q=80&w=800', 'Comfort stretch chinos designed with a sharp, slim-tapered fit. Transitions seamlessly from office to evening.', false, NOW(), NOW()),
+('Minimalist Zip-Up Hoodie', 58.00, 'Outerwear', 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=800', 'Clean and minimalist. This zip-up hoodie is crafted from premium heavyweight fleece for exceptional comfort.', true, NOW(), NOW()),
+('Oxford Button-Down Shirt', 45.00, 'Tops', 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&q=80&w=800', 'A wardrobe staple. Crisp cotton oxford shirt with a modern tailored fit.', false, NOW(), NOW()),
+('Performance Jogger Pants', 75.00, 'Activewear', 'https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&q=80&w=800', 'Engineered for movement. These sleek joggers feature moisture-wicking tech and secure zip pockets.', true, NOW(), NOW()),
+('Lightweight Quilted Vest', 85.00, 'Outerwear', 'https://images.unsplash.com/photo-1606132470659-1bc43bb0edc0?auto=format&fit=crop&q=80&w=800', 'The perfect layering piece. Insulated yet lightweight, featuring a modern diamond quilt pattern.', false, NOW(), NOW()),
+('Knit Polo Shirt', 42.00, 'Tops', 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&q=80&w=800', 'Elevate your casual look. Soft textured knit polo with ribbed cuffs and a sophisticated collar.', false, NOW(), NOW());
