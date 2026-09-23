@@ -31,7 +31,7 @@ export const products = [
     name: "Classic Faded Blue Jeans",
     price: 1820.00,
     category: "Jeans",
-    image: "https://images.unsplash.com/photo-1542272604-780c8d52a5ce?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&q=80&w=800",
     description: "Essential streetwear jeans. Perfect classic blue wash.",
     isTrending: true
   },
@@ -49,7 +49,7 @@ export const products = [
     name: "Retro Checked Shirt",
     price: 825.00,
     category: "Shirts",
-    image: "https://images.unsplash.com/photo-1596755094514-f87e32f6b717?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=800",
     description: "Sharp rectangular checks to complete the 90s aesthetic.",
     isTrending: true
   },
@@ -58,7 +58,7 @@ export const products = [
     name: "Heavyweight Flannel Shirt",
     price: 945.00,
     category: "Shirts",
-    image: "https://images.unsplash.com/photo-1616422285623-14ff016214b0?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800",
     description: "Essential grunge wear. Warm, durable, and effortlessly cool.",
     isTrending: false
   },
