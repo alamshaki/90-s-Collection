@@ -22,9 +22,11 @@ const ProductCard = ({ product }) => {
       
       <div className="flex flex-col p-5 h-full">
         <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{product.category}</span>
-        <Link to={`/product/${product.id}`} className="font-medium text-base text-gray-900 hover:text-primary transition-colors mb-2 truncate">
-          {product.name}
-        </Link>
+        <div className="h-[48px] overflow-hidden mb-2">
+          <Link to={`/product/${product.id}`} className="font-medium text-base text-gray-900 hover:text-primary transition-colors line-clamp-2 leading-tight">
+            {product.name}
+          </Link>
+        </div>
         <div className="flex flex-row items-center justify-between mt-auto gap-3">
           <span className="font-bold text-lg text-gray-900">₹{parseFloat(product.price).toFixed(2)}</span>
           <button 

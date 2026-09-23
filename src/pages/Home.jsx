@@ -6,15 +6,28 @@ import { categories } from '../data/products';
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = React.useState([]);
   const [recentProducts, setRecentProducts] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
 
   React.useEffect(() => {
+    setLoading(true);
     fetch('/api/products')
-      .then(res => res.json())
-      .then(data => {
-        setTrendingProducts(data.filter(p => p.isTrending).slice(0, 4));
-        setRecentProducts(data.slice(-8)); // Get last 8 products for recent
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json();
       })
-      .catch(err => console.error('Failed to fetch products', err));
+      .then(data => {
+        if (Array.isArray(data)) {
+          setTrendingProducts(data.filter(p => p.isTrending === true || p.isTrending === 'true').slice(0, 4));
+          setRecentProducts(data.slice(-8)); // Get last 8 products for recent
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch products', err);
+        setError('Failed to load products.');
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -54,7 +67,7 @@ const Home = () => {
       </section>
 
       {/* Recent Products Scroller */}
-      <section className="py-16 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <section className="py-16 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-8">
             <div>
@@ -66,13 +79,22 @@ const Home = () => {
             </Link>
           </div>
           
-          <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar">
-            {recentProducts.map(product => (
-              <div key={product.id} className="min-w-[280px] sm:min-w-[320px] snap-start">
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
+          
+          {loading ? (
+            <div className="flex justify-center py-12"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>
+          ) : error ? (
+            <div className="text-center py-12 text-gray-500">{error}</div>
+          ) : recentProducts.length > 0 ? (
+            <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar">
+              {recentProducts.map(product => (
+                <div key={product.id} className="min-w-[280px] sm:min-w-[320px] snap-start">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 text-gray-500">No recent products available.</div>
+          )}
         </div>
       </section>
 
@@ -124,11 +146,22 @@ const Home = () => {
             <p className="text-gray-500 text-sm max-w-2xl mx-auto">The most sought-after pieces this season, curated just for you.</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {trendingProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          
+          {loading ? (
+            <div className="flex justify-center py-12"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>
+          ) : error ? (
+            <div className="text-center py-12 text-gray-500">{error}</div>
+          ) : trendingProducts.length > 0 ? (
+            <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0">
+              {trendingProducts.map(product => (
+                <div key={product.id} className="min-w-[280px] sm:min-w-[320px] snap-start md:min-w-0">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 text-gray-500">No trending products available.</div>
+          )}
           
           <div className="mt-16 text-center">
             <Link to="/shop" className="inline-block border border-gray-300 bg-white text-gray-800 hover:border-gray-900 hover:bg-gray-900 hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-sm">

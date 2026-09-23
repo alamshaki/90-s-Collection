@@ -6,7 +6,12 @@ import { Filter, X } from 'lucide-react';
 
 const Shop = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialCategory = searchParams.get('category') || 'All';
+  const getDecodedCategory = () => {
+    const cat = searchParams.get('category');
+    return cat ? decodeURIComponent(cat) : 'All';
+  };
+  
+  const initialCategory = getDecodedCategory();
   const initialSearch = searchParams.get('search') || '';
   
   const [activeCategory, setActiveCategory] = useState(initialCategory);
@@ -30,7 +35,7 @@ const Shop = () => {
   }, []);
 
   useEffect(() => {
-    setActiveCategory(searchParams.get('category') || 'All');
+    setActiveCategory(getDecodedCategory());
     setSearchQuery(searchParams.get('search') || '');
   }, [searchParams]);
 
@@ -77,7 +82,7 @@ const Shop = () => {
           <aside className={`
             fixed inset-0 z-50 bg-white p-6 transform transition-transform duration-300 overflow-y-auto
             md:relative md:inset-auto md:z-auto md:bg-transparent md:p-0 md:transform-none md:w-64 md:flex-shrink-0
-            ${isFilterOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+            ${isFilterOpen ? 'translate-x-0 bg-white/95 backdrop-blur-md' : '-translate-x-full md:translate-x-0'}
           `}>
             
             <div className="flex justify-between items-center mb-8 md:hidden">
@@ -147,7 +152,7 @@ const Shop = () => {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-32 bg-white rounded-3xl border border-gray-100 shadow-sm">
+              <div className="text-center py-32 bg-white/50 backdrop-blur-sm rounded-3xl border border-white shadow-sm">
                 <h3 className="text-xl font-bold mb-3 text-gray-900">No products found</h3>
                 <p className="text-gray-500 mb-8 text-sm">Try adjusting your filters or search term to find what you're looking for.</p>
                 <button 

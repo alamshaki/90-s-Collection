@@ -14,7 +14,7 @@ const Cart = () => {
   const total = subtotal + shipping;
 
   return (
-    <div className="py-12 md:py-20 bg-gray-50 min-h-screen">
+    <div className="py-12 md:py-20 bg-transparent min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-gray-900 mb-10 border-b-2 border-gray-200 pb-6">
           Your Cart
@@ -26,8 +26,8 @@ const Cart = () => {
             {/* Cart Items */}
             <div className="flex-1">
               {cartItems.map((item, index) => (
-                <div key={index} className="flex flex-col sm:flex-row gap-6 border-b border-gray-200 py-6 mb-6 bg-white p-6 shadow-sm">
-                  <div className="w-full sm:w-32 h-40 bg-gray-100 flex-shrink-0">
+                <div key={index} className="flex flex-col sm:flex-row gap-6 border-b border-gray-200 py-6 mb-6 bg-white/50 backdrop-blur-sm rounded-xl p-6 shadow-sm">
+                  <div className="w-full sm:w-32 h-40 bg-white rounded-lg flex-shrink-0">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                   </div>
                   
@@ -50,7 +50,7 @@ const Cart = () => {
                   </div>
                   
                   <div className="text-right">
-                    <span className="font-bold text-xl text-gray-900">${(item.price * item.quantity).toFixed(2)}</span>
+                    <span className="font-bold text-xl text-gray-900">₹{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 </div>
               ))}
@@ -58,7 +58,7 @@ const Cart = () => {
 
             {/* Order Summary */}
             <div className="w-full lg:w-96 flex-shrink-0">
-              <div className="bg-white p-8 shadow-sm border border-gray-100">
+              <div className="bg-white/70 backdrop-blur-sm rounded-xl p-8 shadow-sm border border-white">
                 <h3 className="text-xl font-bold uppercase tracking-wider mb-6 pb-4 border-b-2 border-gray-900">
                   Order Summary
                 </h3>
@@ -66,20 +66,20 @@ const Cart = () => {
                 <div className="space-y-4 mb-6 text-gray-600">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span className="font-medium text-gray-900">${subtotal.toFixed(2)}</span>
+                    <span className="font-medium text-gray-900">₹{subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Shipping</span>
-                    <span className="font-medium text-gray-900">${shipping.toFixed(2)}</span>
+                    <span className="font-medium text-gray-900">₹{shipping.toFixed(2)}</span>
                   </div>
                 </div>
                 
                 <div className="flex justify-between items-center py-6 border-t border-gray-200 mb-6">
                   <span className="text-lg font-bold uppercase tracking-wider text-gray-900">Total</span>
-                  <span className="text-2xl font-extrabold text-primary">${total.toFixed(2)}</span>
+                  <span className="text-2xl font-extrabold text-primary">₹{total.toFixed(2)}</span>
                 </div>
 
-                <Link to="/checkout" className="block w-full bg-gray-900 hover:bg-black text-white text-center py-4 font-bold uppercase tracking-widest transition-colors shadow-md">
+                <Link to="/checkout" className="block w-full bg-gray-900 hover:bg-black text-white rounded-xl text-center py-4 font-bold uppercase tracking-widest transition-colors shadow-md">
                   Proceed to Checkout
                 </Link>
                 
@@ -91,7 +91,7 @@ const Cart = () => {
             
           </div>
         ) : (
-          <div className="text-center py-32 bg-white shadow-sm">
+          <div className="text-center py-32 bg-white/50 backdrop-blur-sm rounded-2xl shadow-sm border border-white">
             <h2 className="text-3xl font-extrabold mb-4 uppercase tracking-tight">Your cart is empty</h2>
             <p className="text-gray-500 mb-10 text-lg">Looks like you haven't added anything to your cart yet.</p>
             <Link to="/shop" className="inline-block bg-primary hover:bg-primary-hover text-white px-8 py-4 font-bold uppercase tracking-widest transition-colors">
