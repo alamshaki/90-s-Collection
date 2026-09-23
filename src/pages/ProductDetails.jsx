@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
 import { ArrowLeft, ShoppingCart, Heart } from 'lucide-react';
-import './ProductDetails.css';
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -12,9 +11,9 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="container" style={{ padding: '100px 0', textAlign: 'center' }}>
-        <h2>Product not found</h2>
-        <Link to="/shop" className="btn btn-primary" style={{ marginTop: '20px' }}>Back to Shop</Link>
+      <div className="max-w-7xl mx-auto px-4 py-32 text-center min-h-screen">
+        <h2 className="text-3xl font-bold mb-6">Product not found</h2>
+        <Link to="/shop" className="inline-block bg-primary text-white px-6 py-3 font-bold uppercase tracking-wider">Back to Shop</Link>
       </div>
     );
   }
@@ -24,46 +23,50 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="page-wrapper product-details-page">
-      <div className="container">
-        <Link to="/shop" className="back-link">
+    <div className="py-12 md:py-20 bg-white min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Link to="/shop" className="inline-flex items-center gap-2 text-gray-600 hover:text-primary font-bold uppercase tracking-wider text-sm mb-10 transition-colors">
           <ArrowLeft size={16} /> Back to Shop
         </Link>
         
-        <div className="product-details-grid">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Image Gallery */}
-          <div className="product-gallery">
-            <div className="main-image-container">
-              <img src={product.image} alt={product.name} className="main-image" />
+          <div className="flex flex-col gap-4">
+            <div className="aspect-[3/4] bg-gray-100 overflow-hidden relative">
+              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
             </div>
             {/* Mock thumbnails */}
-            <div className="thumbnail-list">
+            <div className="grid grid-cols-3 gap-4">
               {[1, 2, 3].map(num => (
-                <div key={num} className="thumbnail">
-                  <img src={product.image} alt={`${product.name} view ${num}`} />
+                <div key={num} className="aspect-[3/4] bg-gray-100 cursor-pointer overflow-hidden opacity-70 hover:opacity-100 transition-opacity">
+                  <img src={product.image} alt={`${product.name} view ${num}`} className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
           </div>
 
           {/* Product Info */}
-          <div className="product-info-details">
-            <span className="product-category-label">{product.category}</span>
-            <h1 className="product-title">{product.name}</h1>
-            <p className="product-price-large">${product.price.toFixed(2)}</p>
+          <div className="flex flex-col">
+            <span className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-2">{product.category}</span>
+            <h1 className="text-4xl md:text-5xl font-extrabold uppercase leading-none tracking-tight text-gray-900 mb-4">{product.name}</h1>
+            <p className="text-3xl font-semibold text-gray-900 mb-8">${product.price.toFixed(2)}</p>
             
-            <p className="product-description">{product.description}</p>
+            <p className="text-gray-600 text-lg leading-relaxed mb-10">{product.description}</p>
             
-            <div className="selection-group">
-              <div className="selection-header">
-                <span className="selection-label">Size</span>
-                <button className="size-guide-btn">Size Guide</button>
+            <div className="mb-8 border-t border-gray-200 pt-8">
+              <div className="flex justify-between items-center mb-4">
+                <span className="font-bold uppercase tracking-wider text-gray-900">Select Size</span>
+                <button className="text-gray-500 underline text-sm hover:text-primary transition-colors">Size Guide</button>
               </div>
-              <div className="size-selector">
-                {['S', 'M', 'L', 'XL'].map(size => (
+              <div className="flex flex-wrap gap-3">
+                {['S', 'M', 'L', 'XL', 'XXL'].map(size => (
                   <button 
                     key={size}
-                    className={`size-btn ${selectedSize === size ? 'active' : ''}`}
+                    className={`w-14 h-14 flex items-center justify-center font-bold border transition-colors ${
+                      selectedSize === size 
+                        ? 'border-gray-900 bg-gray-900 text-white' 
+                        : 'border-gray-300 text-gray-700 hover:border-gray-900'
+                    }`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size}
@@ -72,28 +75,31 @@ const ProductDetails = () => {
               </div>
             </div>
             
-            <div className="selection-group">
-              <span className="selection-label">Quantity</span>
-              <div className="quantity-selector">
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
-                <input type="number" value={quantity} readOnly />
-                <button onClick={() => setQuantity(quantity + 1)}>+</button>
+            <div className="mb-10">
+              <span className="block font-bold uppercase tracking-wider text-gray-900 mb-4">Quantity</span>
+              <div className="flex border border-gray-300 w-32 h-14">
+                <button className="w-10 flex items-center justify-center text-xl text-gray-600 hover:text-primary transition-colors" onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
+                <input type="number" className="flex-1 text-center font-bold text-lg outline-none appearance-none" value={quantity} readOnly />
+                <button className="w-10 flex items-center justify-center text-xl text-gray-600 hover:text-primary transition-colors" onClick={() => setQuantity(quantity + 1)}>+</button>
               </div>
             </div>
             
-            <div className="action-buttons">
-              <button className="btn btn-primary add-to-cart-btn" onClick={handleAddToCart}>
+            <div className="flex gap-4 mb-12">
+              <button 
+                className="flex-1 bg-primary hover:bg-primary-hover text-white h-14 flex items-center justify-center gap-3 font-bold uppercase tracking-widest transition-colors shadow-md" 
+                onClick={handleAddToCart}
+              >
                 <ShoppingCart size={20} /> Add to Cart
               </button>
-              <button className="btn btn-outline wishlist-btn">
-                <Heart size={20} />
+              <button className="w-14 h-14 border-2 border-gray-300 flex items-center justify-center text-gray-600 hover:border-primary hover:text-primary transition-colors">
+                <Heart size={24} />
               </button>
             </div>
             
-            <div className="product-meta">
-              <p><strong>SKU:</strong> 90S-{product.id}X</p>
-              <p><strong>Shipping:</strong> Free shipping on orders over $100</p>
-              <p><strong>Returns:</strong> 30 days return policy</p>
+            <div className="border-t border-gray-200 pt-8 flex flex-col gap-3 text-sm text-gray-600">
+              <p><strong className="text-gray-900 font-bold uppercase mr-2">SKU:</strong> 90SMEN-{product.id}X</p>
+              <p><strong className="text-gray-900 font-bold uppercase mr-2">Shipping:</strong> Free shipping on orders over $100</p>
+              <p><strong className="text-gray-900 font-bold uppercase mr-2">Returns:</strong> 30 days hassle-free return policy</p>
             </div>
           </div>
         </div>

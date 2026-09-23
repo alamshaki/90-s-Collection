@@ -1,79 +1,106 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Checkout = () => {
   return (
-    <div className="page-wrapper" style={{ padding: '40px 0 80px' }}>
-      <div className="container">
-        <h1 className="section-title" style={{ textAlign: 'left', marginBottom: '40px' }}>Checkout</h1>
+    <div className="py-12 md:py-20 bg-gray-50 min-h-screen">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-gray-900 mb-10 border-b-2 border-gray-200 pb-6">
+          Checkout
+        </h1>
         
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '40px' }}>
-          <div className="checkout-form">
-            <section style={{ marginBottom: '40px' }}>
-              <h2 style={{ fontFamily: 'var(--font-heading)', borderBottom: '2px solid var(--text-primary)', paddingBottom: '10px', marginBottom: '20px' }}>Shipping Information</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                <div className="form-group">
-                  <label className="form-label">First Name</label>
-                  <input type="text" className="form-control" />
+        <div className="flex flex-col lg:flex-row gap-12">
+          
+          <div className="flex-1 space-y-12">
+            <section className="bg-white p-8 shadow-sm">
+              <h2 className="text-xl font-bold uppercase tracking-wider mb-6 pb-4 border-b-2 border-gray-900">
+                Shipping Information
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">First Name</label>
+                  <input type="text" className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
                 </div>
-                <div className="form-group">
-                  <label className="form-label">Last Name</label>
-                  <input type="text" className="form-control" />
+                <div>
+                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">Last Name</label>
+                  <input type="text" className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
                 </div>
-                <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-                  <label className="form-label">Address</label>
-                  <input type="text" className="form-control" />
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">Address</label>
+                  <input type="text" className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
                 </div>
-                <div className="form-group">
-                  <label className="form-label">City</label>
-                  <input type="text" className="form-control" />
+                <div>
+                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">City</label>
+                  <input type="text" className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
                 </div>
-                <div className="form-group">
-                  <label className="form-label">Zip Code</label>
-                  <input type="text" className="form-control" />
+                <div>
+                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">Zip Code</label>
+                  <input type="text" className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
                 </div>
               </div>
             </section>
 
-            <section style={{ marginBottom: '40px' }}>
-              <h2 style={{ fontFamily: 'var(--font-heading)', borderBottom: '2px solid var(--text-primary)', paddingBottom: '10px', marginBottom: '20px' }}>Payment Details</h2>
-              <div style={{ display: 'grid', gap: '20px' }}>
-                <div className="form-group">
-                  <label className="form-label">Card Number</label>
-                  <input type="text" className="form-control" placeholder="0000 0000 0000 0000" />
+            <section className="bg-white p-8 shadow-sm">
+              <h2 className="text-xl font-bold uppercase tracking-wider mb-6 pb-4 border-b-2 border-gray-900">
+                Payment Details
+              </h2>
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">Card Number</label>
+                  <input type="text" placeholder="0000 0000 0000 0000" className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors tracking-widest" />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                  <div className="form-group">
-                    <label className="form-label">Expiry Date</label>
-                    <input type="text" className="form-control" placeholder="MM/YY" />
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">Expiry Date</label>
+                    <input type="text" placeholder="MM/YY" className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-center" />
                   </div>
-                  <div className="form-group">
-                    <label className="form-label">CVC</label>
-                    <input type="text" className="form-control" placeholder="123" />
+                  <div>
+                    <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">CVC</label>
+                    <input type="text" placeholder="123" className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-center" />
                   </div>
                 </div>
               </div>
             </section>
             
-            <button className="btn btn-primary" style={{ width: '100%', fontSize: '1.2rem', padding: '16px' }}>Place Order</button>
+            <button className="w-full bg-primary hover:bg-primary-hover text-white py-5 font-extrabold uppercase tracking-widest text-lg transition-colors shadow-lg">
+              Place Order
+            </button>
           </div>
 
-          <div className="order-summary" style={{ backgroundColor: 'var(--bg-secondary)', padding: '30px', border: 'var(--bold-border)', height: 'fit-content' }}>
-             <h3 style={{ textTransform: 'uppercase', marginBottom: '20px', borderBottom: '2px solid var(--text-primary)', paddingBottom: '10px' }}>In Your Cart</h3>
-             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                <span>Classic Denim Jacket</span>
-                <span>$89.99</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                <span>Chunky Platform Sneakers</span>
-                <span>$120.00</span>
-              </div>
-              <hr style={{ margin: '20px 0', border: 'none', borderTop: '1px solid var(--border-color)' }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '1.2rem' }}>
-                <span>Total</span>
-                <span>$219.99</span>
-              </div>
+          <div className="w-full lg:w-96 flex-shrink-0">
+            <div className="bg-white p-8 shadow-sm border border-gray-100 sticky top-28">
+               <h3 className="text-xl font-bold uppercase tracking-wider mb-6 pb-4 border-b-2 border-gray-900">
+                 In Your Cart
+               </h3>
+               
+               <div className="space-y-4 mb-6">
+                 <div className="flex justify-between items-center text-sm font-medium">
+                    <span className="text-gray-600 truncate mr-4">Men's Vintage Wash Denim Jacket</span>
+                    <span className="text-gray-900 whitespace-nowrap">$89.99</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm font-medium">
+                    <span className="text-gray-600 truncate mr-4">Classic High-Top Sneakers</span>
+                    <span className="text-gray-900 whitespace-nowrap">$120.00</span>
+                  </div>
+               </div>
+               
+                <div className="border-t border-gray-200 py-6 space-y-3">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">Subtotal</span>
+                    <span className="font-medium">$209.99</span>
+                  </div>
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-500">Shipping</span>
+                    <span className="font-medium">$10.00</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center pt-6 border-t border-gray-900 mt-2">
+                  <span className="text-lg font-bold uppercase tracking-wider text-gray-900">Total</span>
+                  <span className="text-2xl font-extrabold text-primary">$219.99</span>
+                </div>
+            </div>
           </div>
+          
         </div>
       </div>
     </div>

@@ -3,29 +3,43 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
   return (
-    <div className="page-wrapper" style={{ padding: '80px 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div style={{ width: '100%', maxWidth: '400px', padding: '40px', border: 'var(--bold-border)', backgroundColor: 'var(--bg-secondary)' }}>
-        <h1 style={{ fontFamily: 'var(--font-heading)', textAlign: 'center', marginBottom: '30px', textTransform: 'uppercase' }}>Register</h1>
+    <div className="py-20 md:py-32 bg-gray-50 min-h-screen flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-white p-8 md:p-10 shadow-xl border-t-4 border-gray-900">
+        <h1 className="text-3xl font-extrabold text-center mb-8 uppercase tracking-tight text-gray-900">Create Account</h1>
         
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div className="form-group">
-            <label className="form-label">Name</label>
-            <input type="text" className="form-control" required />
+        <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+          <div>
+            <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">Full Name</label>
+            <input 
+              type="text" 
+              className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" 
+              required 
+            />
           </div>
-          <div className="form-group">
-            <label className="form-label">Email</label>
-            <input type="email" className="form-control" required />
+          <div>
+            <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">Email</label>
+            <input 
+              type="email" 
+              className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" 
+              required 
+            />
           </div>
-          <div className="form-group">
-            <label className="form-label">Password</label>
-            <input type="password" className="form-control" required />
+          <div>
+            <label className="block text-sm font-bold uppercase tracking-wider text-gray-700 mb-2">Password</label>
+            <input 
+              type="password" 
+              className="w-full bg-gray-50 border border-gray-300 p-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" 
+              required 
+            />
           </div>
           
-          <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '20px' }}>Create Account</button>
+          <button type="submit" className="w-full bg-gray-900 hover:bg-black text-white py-4 font-bold uppercase tracking-widest transition-colors mt-4">
+            Register
+          </button>
         </form>
         
-        <p style={{ textAlign: 'center', marginTop: '20px', color: 'var(--text-secondary)' }}>
-          Already have an account? <Link to="/login" style={{ color: 'var(--text-primary)', fontWeight: 'bold' }}>Login here</Link>
+        <p className="text-center mt-8 text-gray-600">
+          Already have an account? <Link to="/login" className="text-primary font-extrabold uppercase hover:underline ml-2">Login</Link>
         </p>
       </div>
     </div>
