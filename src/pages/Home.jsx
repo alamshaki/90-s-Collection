@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { products, categories } from '../data/products';
-import { ArrowRight, Truck, ShieldCheck, RefreshCw } from 'lucide-react';
+import { ArrowRight, Truck, ShieldCheck, RefreshCw, Heart } from 'lucide-react';
 
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = React.useState([]);
@@ -173,13 +173,13 @@ const Home = () => {
             <p className="text-gray-500 text-sm max-w-2xl mx-auto">We bring the best of the 90's streetwear aesthetic without compromising on modern quality.</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Feature 1 */}
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
                 <Truck size={28} />
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Fast & Free Shipping</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">Fast Shipping</h3>
               <p className="text-gray-500 text-sm leading-relaxed">Enjoy complimentary express shipping on all orders over ₹1500. Quick dispatch guaranteed.</p>
             </div>
             
@@ -189,7 +189,7 @@ const Home = () => {
                 <ShieldCheck size={28} />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-3">Premium Quality</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">We source the highest quality fabrics to ensure our vintage-inspired fits feel as good as they look.</p>
+              <p className="text-gray-500 text-sm leading-relaxed">We source the highest quality fabrics to ensure our vintage-inspired fits feel great.</p>
             </div>
             
             {/* Feature 3 */}
@@ -198,7 +198,16 @@ const Home = () => {
                 <RefreshCw size={28} />
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-3">Easy Returns</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">Not the perfect fit? No worries. We offer a hassle-free 30-day return policy on all unworn items.</p>
+              <p className="text-gray-500 text-sm leading-relaxed">Not the perfect fit? We offer a hassle-free 30-day return policy on all unworn items.</p>
+            </div>
+
+            {/* Feature 4 */}
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+                <Heart size={28} />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">Customer Care</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">Our support team is available 24/7 to help you with any questions or style advice.</p>
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
           </span>
         )}
         <button 
-          className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm p-2 rounded-full text-gray-500 hover:text-primary transition-colors z-20 shadow-sm hover:scale-110"
+          className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm p-2 rounded-full text-yellow-400 hover:text-yellow-500 transition-colors z-20 shadow-sm hover:scale-110"
           onClick={(e) => {
             e.preventDefault();
             alert(`Added ${product.name} to wishlist!`);

@@ -88,15 +88,25 @@ const Shop = () => {
 
             <div className="mb-10 bg-white md:bg-transparent md:border-0 border border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 shadow-sm md:shadow-none">
               <h3 className="text-sm font-bold uppercase tracking-wider mb-5 text-gray-900">Categories</h3>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {categories.map(category => (
                   <li key={category}>
-                    <button 
-                      className={`text-left w-full hover:text-primary transition-all text-sm font-medium ${activeCategory === category ? 'text-primary translate-x-1' : 'text-gray-500'}`}
-                      onClick={() => handleCategoryChange(category)}
-                    >
-                      {category}
-                    </button>
+                    <label className="flex items-center space-x-3 cursor-pointer group">
+                      <div className="relative flex items-center">
+                        <input 
+                          type="checkbox"
+                          className="peer appearance-none w-5 h-5 border-2 border-gray-200 rounded text-primary focus:ring-primary focus:ring-offset-0 checked:bg-primary checked:border-primary transition-colors cursor-pointer"
+                          checked={activeCategory === category || (activeCategory === 'All' && category === 'All')}
+                          onChange={() => handleCategoryChange(category)}
+                        />
+                        <svg className="absolute w-3.5 h-3.5 text-white pointer-events-none opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span className={`text-sm font-medium transition-colors ${activeCategory === category ? 'text-primary' : 'text-gray-600 group-hover:text-gray-900'}`}>
+                        {category}
+                      </span>
+                    </label>
                   </li>
                 ))}
               </ul>
