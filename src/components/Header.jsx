@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Search, Menu, X, User } from 'lucide-react';
+import mainLogo from '../assets/main-logo.png';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,13 +36,8 @@ const Header = () => {
           </button>
 
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0 flex items-center gap-1">
-            <span className="font-extrabold text-2xl tracking-tighter text-gray-900 uppercase">
-              90's
-            </span>
-            <span className="font-bold text-2xl tracking-tighter text-primary uppercase">
-              Men
-            </span>
+          <Link to="/" className="flex-shrink-0 flex items-center">
+            <img src={mainLogo} alt="90's Men Logo" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

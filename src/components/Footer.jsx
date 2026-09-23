@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MessageCircle, Globe, Share2, Mail } from 'lucide-react';
+import mainLogo from '../assets/main-logo.png';
 
 const Footer = () => {
   return (
@@ -9,9 +10,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <h3 className="font-extrabold text-2xl tracking-tighter uppercase mb-4">
-              90's<span className="text-primary">Men</span>
-            </h3>
+            <Link to="/" className="inline-block mb-4">
+              <img src={mainLogo} alt="90's Men Logo" className="h-10 w-auto" />
+            </Link>
             <p className="text-gray-400 mb-6 max-w-sm">
               The premier destination for modern men's fashion inspired by the raddest decade. Stay fresh, stay fly.
             </p>
