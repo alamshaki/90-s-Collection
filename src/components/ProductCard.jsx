@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart, Shirt, Scissors, Briefcase, Tag, Target, Star, Circle, Wind, Activity } from 'lucide-react';
+import { ShoppingCart, Shirt, Scissors, Briefcase, Tag, Target, Star, Circle, Wind, Activity, Heart } from 'lucide-react';
 
 const getCategoryIcon = (category) => {
   const iconProps = { size: 12, className: "mr-1" };
@@ -34,6 +34,15 @@ const ProductCard = ({ product }) => {
             Trending
           </span>
         )}
+        <button 
+          className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm p-2 rounded-full text-gray-500 hover:text-primary transition-colors z-20 shadow-sm hover:scale-110"
+          onClick={(e) => {
+            e.preventDefault();
+            alert(`Added ${product.name} to wishlist!`);
+          }}
+        >
+          <Heart size={18} />
+        </button>
       </Link>
       
       <div className="flex flex-col p-5 flex-1">
