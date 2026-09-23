@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
-import { products, categories } from '../data/products';
+import { categories } from '../data/products';
 import { Filter, X } from 'lucide-react';
 
 const Shop = () => {
@@ -13,6 +13,21 @@ const Shop = () => {
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [priceRange, setPriceRange] = useState(150);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch products', err);
+        setLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
     setActiveCategory(searchParams.get('category') || 'All');

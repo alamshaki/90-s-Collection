@@ -1,0 +1,33 @@
+// use prisma-8
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String
+  orders    Order[]
+  createdAt TimestamptzString @default(now())
+  updatedAt temporal.updatedAtString()
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  price       Float
+  category    String
+  image       String
+  description String
+  isTrending  Boolean  @default(false)
+  createdAt   TimestamptzString @default(now())
+  updatedAt   temporal.updatedAtString()
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  total     Float
+  status    String   @default("PENDING")
+  createdAt TimestamptzString @default(now())
+  updatedAt temporal.updatedAtString()
+}

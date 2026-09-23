@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
-import { products, categories } from '../data/products';
+import { categories } from '../data/products';
 
 const Home = () => {
-  const trendingProducts = products.filter(p => p.isTrending).slice(0, 4);
+  const [trendingProducts, setTrendingProducts] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        setTrendingProducts(data.filter(p => p.isTrending).slice(0, 4));
+      })
+      .catch(err => console.error('Failed to fetch trending products', err));
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">

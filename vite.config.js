@@ -10,7 +10,10 @@ export default defineConfig({
   ],
   base: '/',
   server: {
-    allowedHosts: ['nine0-s-collection.onrender.com']
+    allowedHosts: ['nine0-s-collection.onrender.com'],
+    proxy: {
+      '/api': 'http://localhost:5000'
+    }
   },
   preview: {
     allowedHosts: ['nine0-s-collection.onrender.com']

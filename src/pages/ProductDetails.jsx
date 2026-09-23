@@ -1,13 +1,38 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { products } from '../data/products';
+
 import { ArrowLeft, ShoppingCart, Heart } from 'lucide-react';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const product = products.find(p => p.id === parseInt(id));
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('M');
+
+  React.useEffect(() => {
+    fetch(`/api/products/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error('Not found');
+        return res.json();
+      })
+      .then(data => {
+        setProduct(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch product', err);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-32 text-center min-h-screen">
+        <h2 className="text-2xl font-bold mb-6">Loading product...</h2>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
