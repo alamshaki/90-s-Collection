@@ -39,6 +39,7 @@ const Header = () => {
   };
 
   return (
+    <>
     <header className="sticky top-0 z-50 w-full glass-panel border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center md:justify-between items-center h-16 md:h-20">
@@ -135,7 +136,6 @@ const Header = () => {
           </form>
         </div>
 
-        {/* Mobile Dropdown Menu (Toggleable) */}
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg pb-4">
             <div className="flex flex-col px-4 pt-2 pb-4 space-y-1">
@@ -147,30 +147,31 @@ const Header = () => {
           </div>
         )}
       </div>
-
-      {/* Bottom Navigation for Mobile */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 z-50 px-6 py-3 flex justify-between items-center shadow-[0_-8px_15px_-3px_rgba(0,0,0,0.1)] rounded-t-[12px]">
-        <Link to="/" className="flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors">
-          <Home size={20} />
-          <span className="text-[10px] font-medium">Home</span>
-        </Link>
-        <button onClick={() => navigate('/wishlist')} className="flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors">
-          <Heart size={20} />
-          <span className="text-[10px] font-medium">Wishlist</span>
-        </button>
-        <Link to="/cart" className="flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors relative">
-          <div className="relative">
-            <ShoppingBag size={20} />
-            <span className="absolute -top-1.5 -right-1.5 bg-primary text-white text-[10px] font-bold h-3.5 w-3.5 rounded-full flex items-center justify-center">3</span>
-          </div>
-          <span className="text-[10px] font-medium">Cart</span>
-        </Link>
-        <Link to="/login" className="flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors">
-          <User size={20} />
-          <span className="text-[10px] font-medium">Profile</span>
-        </Link>
-      </nav>
     </header>
+
+    {/* Bottom Navigation for Mobile */}
+    <nav className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 z-[100] px-6 py-3 flex justify-between items-center shadow-[0_-8px_15px_-3px_rgba(0,0,0,0.1)] rounded-t-[12px]">
+      <Link to="/" className="flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors">
+        <Home size={20} />
+        <span className="text-[10px] font-medium">Home</span>
+      </Link>
+      <button onClick={() => navigate('/wishlist')} className="flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors">
+        <Heart size={20} />
+        <span className="text-[10px] font-medium">Wishlist</span>
+      </button>
+      <Link to="/cart" className="flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors relative">
+        <div className="relative">
+          <ShoppingBag size={20} />
+          <span className="absolute -top-1.5 -right-1.5 bg-primary text-white text-[10px] font-bold h-3.5 w-3.5 rounded-full flex items-center justify-center">3</span>
+        </div>
+        <span className="text-[10px] font-medium">Cart</span>
+      </Link>
+      <Link to="/login" className="flex flex-col items-center gap-1 text-gray-500 hover:text-primary transition-colors">
+        <User size={20} />
+        <span className="text-[10px] font-medium">Profile</span>
+      </Link>
+    </nav>
+    </>
   );
 };
 

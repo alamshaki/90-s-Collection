@@ -136,15 +136,15 @@ const ProductDetails = () => {
               </div>
             </div>
             
-            <div className="flex gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <button 
-                className="flex-1 bg-primary hover:bg-primary-hover text-white rounded-xl h-14 flex items-center justify-center gap-2 font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5" 
+                className="flex-[3] bg-gray-900 hover:bg-black text-white rounded-2xl h-14 flex items-center justify-center gap-3 font-semibold text-base transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5" 
                 onClick={handleAddToCart}
               >
-                <ShoppingCart size={18} /> Add to Cart
+                <ShoppingCart size={20} /> Add to Bag
               </button>
-              <button className="w-14 h-14 rounded-xl border border-gray-200 bg-white/50 backdrop-blur-sm flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition-colors hover:shadow-sm">
-                <Heart size={20} />
+              <button className="flex-1 sm:flex-none sm:w-16 h-14 rounded-2xl border-2 border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-red-500 hover:text-red-500 hover:bg-red-50 transition-all hover:shadow-md group">
+                <Heart size={22} className="group-hover:fill-red-500 transition-colors" />
               </button>
             </div>
             
