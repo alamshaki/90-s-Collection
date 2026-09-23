@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
-import { categories } from '../data/products';
+import { categories, products as allProducts } from '../data/products';
 import { Filter, X } from 'lucide-react';
 
 const Shop = () => {
@@ -22,16 +22,12 @@ const Shop = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/products')
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Failed to fetch products', err);
-        setLoading(false);
-      });
+    setLoading(true);
+    // Simulate slight network delay
+    setTimeout(() => {
+      setProducts(allProducts);
+      setLoading(false);
+    }, 300);
   }, []);
 
   useEffect(() => {

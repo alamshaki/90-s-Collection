@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { products, categories } from '../data/products';
+import { ArrowRight, Truck, ShieldCheck, RefreshCw } from 'lucide-react';
 
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = React.useState([]);
@@ -62,8 +63,8 @@ const Home = () => {
       <section className="py-16 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900">Recent Arrivals</h2>
-            <p className="text-gray-500 mt-2 text-sm">Discover the latest additions to the 90's Clothing's collection.</p>
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900">Latest Collection</h2>
+            <p className="text-gray-500 mt-2 text-sm">Discover the latest additions to the 90's Clothing Collections.</p>
           </div>
           
           
@@ -84,8 +85,8 @@ const Home = () => {
           )}
 
           <div className="mt-12 text-center">
-            <Link to="/shop" className="inline-block border border-gray-300 bg-white text-gray-800 hover:border-gray-900 hover:bg-gray-900 hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-sm">
-              View All
+            <Link to="/shop" className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+              View All <ArrowRight size={18} />
             </Link>
           </div>
         </div>
@@ -164,21 +165,42 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Promo Section */}
-      <section className="py-32 bg-[#0f172a] text-white text-center px-4 relative overflow-hidden">
-        <div className="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-primary/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-        
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-            The Spring Collection
-          </h2>
-          <p className="text-base md:text-lg text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-            Our latest collection focuses on premium fabrics, tailored fits, and the uncompromising attitude of modern menswear. Upgrade your rotation today.
-          </p>
-          <Link to="/shop" className="inline-block bg-primary hover:bg-primary-hover text-white px-10 py-3.5 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-            Explore Collection
-          </Link>
+      {/* Why Choose Us Section */}
+      <section className="py-24 bg-transparent border-t border-gray-200/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900 mb-3">Why Choose Us</h2>
+            <p className="text-gray-500 text-sm max-w-2xl mx-auto">We bring the best of the 90's streetwear aesthetic without compromising on modern quality.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+                <Truck size={28} />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">Fast & Free Shipping</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">Enjoy complimentary express shipping on all orders over ₹1500. Quick dispatch guaranteed.</p>
+            </div>
+            
+            {/* Feature 2 */}
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+                <ShieldCheck size={28} />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">Premium Quality</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">We source the highest quality fabrics to ensure our vintage-inspired fits feel as good as they look.</p>
+            </div>
+            
+            {/* Feature 3 */}
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+                <RefreshCw size={28} />
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">Easy Returns</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">Not the perfect fit? No worries. We offer a hassle-free 30-day return policy on all unworn items.</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

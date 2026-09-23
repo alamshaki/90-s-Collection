@@ -132,26 +132,28 @@ const ProductDetails = () => {
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-3 mb-12">
-              <button 
-                className="flex-1 bg-primary hover:bg-primary-hover text-white rounded-xl h-12 flex items-center justify-center gap-2 font-medium text-sm sm:text-base transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 px-4" 
-                onClick={handleAddToCart}
-              >
-                <ShoppingCart size={18} /> Add To Cart
-              </button>
+            <div className="flex flex-col gap-3 mb-12">
+              <div className="flex flex-row gap-3">
+                <button 
+                  className="flex-1 bg-primary hover:bg-primary-hover text-white rounded-xl h-14 flex items-center justify-center gap-2 font-medium text-base transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 px-4" 
+                  onClick={handleAddToCart}
+                >
+                  <ShoppingCart size={18} /> Add To Cart
+                </button>
+                <button className="w-14 sm:w-16 h-14 rounded-xl border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary hover:bg-gray-50 transition-all hover:shadow-sm group shrink-0">
+                  <Heart size={22} className="group-hover:fill-primary transition-colors" />
+                </button>
+              </div>
               <a 
                 href={`https://wa.me/916266166950?text=${encodeURIComponent(`Hi, I'm interested in ordering the ${product.name} (Size: ${selectedSize}, Quantity: ${quantity}) for ₹${product.price}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-xl h-12 flex items-center justify-center gap-2 font-medium text-sm sm:text-base transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 px-4"
+                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white rounded-xl h-14 flex items-center justify-center gap-2 font-medium text-base transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 px-4"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
                 </svg> Order With WhatsApp
               </a>
-              <button className="w-full sm:w-14 h-12 rounded-xl border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary hover:bg-gray-50 transition-all hover:shadow-sm group">
-                <Heart size={20} className="group-hover:fill-primary transition-colors" />
-              </button>
             </div>
             
             {/* Tabs Section */}
