@@ -136,15 +136,15 @@ const ProductDetails = () => {
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-row gap-3 mb-12">
               <button 
-                className="flex-[3] bg-primary hover:bg-primary-hover text-white rounded-xl h-12 flex items-center justify-center gap-2 font-medium text-sm transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5" 
+                className="flex-1 bg-primary hover:bg-primary-hover text-white rounded-xl h-10 flex items-center justify-center gap-2 font-medium text-xs sm:text-sm transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 px-4" 
                 onClick={handleAddToCart}
               >
-                <ShoppingCart size={18} /> Add To Cart
+                <ShoppingCart size={16} /> Add To Cart
               </button>
-              <button className="flex-1 sm:flex-none sm:w-14 h-12 rounded-xl border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary hover:bg-gray-50 transition-all hover:shadow-sm group">
-                <Heart size={20} className="group-hover:fill-primary transition-colors" />
+              <button className="w-12 sm:w-14 h-10 rounded-xl border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-primary hover:text-primary hover:bg-gray-50 transition-all hover:shadow-sm group">
+                <Heart size={18} className="group-hover:fill-primary transition-colors" />
               </button>
             </div>
             
