@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
-import { categories } from '../data/products';
+import { products, categories } from '../data/products';
 
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = React.useState([]);
@@ -11,23 +11,15 @@ const Home = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    fetch('/api/products')
-      .then(res => {
-        if (!res.ok) throw new Error('Network response was not ok');
-        return res.json();
-      })
-      .then(data => {
-        if (Array.isArray(data)) {
-          setTrendingProducts(data.filter(p => p.isTrending === true || p.isTrending === 'true').slice(0, 4));
-          setRecentProducts(data.slice(-8)); // Get last 8 products for recent
-        }
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Failed to fetch products', err);
-        setError('Failed to load products.');
-        setLoading(false);
-      });
+    try {
+      setTrendingProducts(products.filter(p => p.isTrending === true || p.isTrending === 'true').slice(0, 4));
+      setRecentProducts(products.slice(-8)); // Get last 8 products for recent
+      setLoading(false);
+    } catch (err) {
+      console.error('Failed to load products', err);
+      setError('Failed to load products.');
+      setLoading(false);
+    }
   }, []);
 
   return (
@@ -69,14 +61,9 @@ const Home = () => {
       {/* Recent Products Scroller */}
       <section className="py-16 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-8">
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-gray-900">Recent Arrivals</h2>
-              <p className="text-gray-500 mt-2 text-sm">Discover the latest additions to the 90's Clothing's collection.</p>
-            </div>
-            <Link to="/shop" className="text-sm font-medium text-primary hover:text-primary-hover transition-colors">
-              View All <span className="ml-1">→</span>
-            </Link>
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900">Recent Arrivals</h2>
+            <p className="text-gray-500 mt-2 text-sm">Discover the latest additions to the 90's Clothing's collection.</p>
           </div>
           
           
@@ -95,6 +82,12 @@ const Home = () => {
           ) : (
             <div className="text-center py-12 text-gray-500">No recent products available.</div>
           )}
+
+          <div className="mt-12 text-center">
+            <Link to="/shop" className="inline-block border border-gray-300 bg-white text-gray-800 hover:border-gray-900 hover:bg-gray-900 hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-sm">
+              View All
+            </Link>
+          </div>
         </div>
       </section>
 
