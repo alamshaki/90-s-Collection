@@ -1,11 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Shirt, Scissors, Briefcase, Tag, Target, Star, Circle, Wind, Activity } from 'lucide-react';
+
+const getCategoryIcon = (category) => {
+  const iconProps = { size: 12, className: "mr-1" };
+  switch (category) {
+    case 'T-Shirts': return <Shirt {...iconProps} />;
+    case 'Shirts': return <Tag {...iconProps} />;
+    case 'Jeans': return <Scissors {...iconProps} />;
+    case 'Trousers & Pants': return <Briefcase {...iconProps} />;
+    case 'Shorts': return <Circle {...iconProps} />;
+    case 'Hoodies & Sweatshirts': return <Target {...iconProps} />;
+    case 'Jackets & Coats': return <Wind {...iconProps} />;
+    case 'Kurtas & Ethnic Wear': return <Star {...iconProps} />;
+    case 'Tracksuits & Activewear': return <Activity {...iconProps} />;
+    case 'Suits & Blazers': return <Briefcase {...iconProps} />;
+    default: return <Shirt {...iconProps} />;
+  }
+};
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100">
-      <Link to={`/product/${product.id}`} className="relative aspect-[4/5] overflow-hidden bg-gray-100 block">
+    <div className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
+      <Link to={`/product/${product.id}`} className="relative aspect-[4/5] overflow-hidden bg-gray-100 block shrink-0">
         <img 
           src={product.image} 
           alt={product.name} 
@@ -17,17 +34,21 @@ const ProductCard = ({ product }) => {
             Trending
           </span>
         )}
-        {/* Removed Quick Add Overlay from here */}
       </Link>
       
-      <div className="flex flex-col p-5 h-full">
-        <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{product.category}</span>
-        <div className="h-[48px] overflow-hidden mb-2">
+      <div className="flex flex-col p-5 flex-1">
+        <div className="mb-2">
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-primary text-white text-[10px] font-semibold tracking-wider uppercase shadow-sm">
+            {getCategoryIcon(product.category)}
+            {product.category}
+          </span>
+        </div>
+        <div className="mb-3">
           <Link to={`/product/${product.id}`} className="font-medium text-base text-gray-900 hover:text-primary transition-colors line-clamp-2 leading-tight">
             {product.name}
           </Link>
         </div>
-        <div className="flex flex-row items-center justify-between mt-3 gap-3">
+        <div className="flex flex-row items-center justify-between mt-auto gap-3">
           <span className="font-bold text-lg text-gray-900">₹{parseFloat(product.price).toFixed(2)}</span>
           <button 
             className="flex-1 bg-primary text-white hover:bg-primary-hover font-medium text-sm py-2 rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm max-w-[120px]"
