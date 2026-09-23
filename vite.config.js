@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/90-s-Collection/',
+  base: '/',
   server: {
     allowedHosts: ['nine0-s-collection.onrender.com']
   },
