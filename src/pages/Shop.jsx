@@ -12,7 +12,7 @@ const Shop = () => {
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [priceRange, setPriceRange] = useState(150);
+  const [priceRange, setPriceRange] = useState(10000);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -53,7 +53,7 @@ const Shop = () => {
   };
 
   return (
-    <div className="py-12 md:py-20 bg-[#f8fafc] min-h-screen">
+    <div className="py-12 md:py-20 bg-transparent min-h-[calc(100vh-80px)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="flex flex-col items-center text-center mb-16">
@@ -104,12 +104,13 @@ const Shop = () => {
             <div className="mb-10 bg-white md:bg-transparent md:border-0 border border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 shadow-sm md:shadow-none">
               <div className="flex justify-between items-center mb-5">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900">Price</h3>
-                <span className="text-sm font-medium text-primary">${priceRange}</span>
+                <span className="text-sm font-medium text-primary">₹{priceRange}</span>
               </div>
               <input 
                 type="range" 
                 min="0" 
-                max="200" 
+                max="10000" 
+                step="100"
                 value={priceRange} 
                 onChange={(e) => setPriceRange(Number(e.target.value))}
                 className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
@@ -153,7 +154,7 @@ const Shop = () => {
                   className="bg-gray-900 hover:bg-black text-white px-8 py-3 rounded-full font-medium transition-colors text-sm"
                   onClick={() => {
                     handleCategoryChange('All');
-                    setPriceRange(200);
+                    setPriceRange(10000);
                     searchParams.delete('search');
                     setSearchParams(searchParams);
                   }}

@@ -9,6 +9,7 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('M');
+  const [showSizeGuide, setShowSizeGuide] = useState(false);
 
   React.useEffect(() => {
     fetch(`/api/products/${id}`)
@@ -74,14 +75,19 @@ const ProductDetails = () => {
           <div className="flex flex-col lg:py-8">
             <span className="text-gray-400 uppercase tracking-widest text-xs font-semibold mb-3">{product.category}</span>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">{product.name}</h1>
-            <p className="text-2xl md:text-3xl font-semibold text-gray-900 mb-8">${product.price.toFixed(2)}</p>
+            <p className="text-2xl md:text-3xl font-semibold text-gray-900 mb-8">₹{parseFloat(product.price).toFixed(2)}</p>
             
             <p className="text-gray-500 text-base leading-relaxed mb-10">{product.description}</p>
             
             <div className="mb-8 border-t border-gray-100 pt-8">
               <div className="flex justify-between items-center mb-5">
                 <span className="font-semibold text-gray-900">Select Size</span>
-                <button className="text-gray-500 underline text-sm hover:text-primary transition-colors">Size Guide</button>
+                <button 
+                  onClick={() => setShowSizeGuide(true)}
+                  className="text-gray-500 underline text-sm hover:text-primary transition-colors"
+                >
+                  Size Guide
+                </button>
               </div>
               <div className="flex flex-wrap gap-3">
                 {['S', 'M', 'L', 'XL', 'XXL'].map(size => (
@@ -129,6 +135,55 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+
+      {/* Size Guide Modal */}
+      {showSizeGuide && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/50 backdrop-blur-sm">
+          <div className="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button 
+              onClick={() => setShowSizeGuide(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 rounded-full p-2 transition-colors"
+            >
+              <ArrowLeft size={16} className="rotate-180" />
+            </button>
+            <div className="p-8">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Size Guide</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-left">
+                  <thead className="bg-gray-50 text-gray-600 font-medium">
+                    <tr>
+                      <th className="px-4 py-3 rounded-l-lg">Size</th>
+                      <th className="px-4 py-3">Chest (in)</th>
+                      <th className="px-4 py-3 rounded-r-lg">Length (in)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {[
+                      { size: 'S', chest: '36-38', length: '27' },
+                      { size: 'M', chest: '38-40', length: '28' },
+                      { size: 'L', chest: '40-42', length: '29' },
+                      { size: 'XL', chest: '42-44', length: '30' },
+                      { size: 'XXL', chest: '44-46', length: '31' },
+                    ].map((row) => (
+                      <tr key={row.size} className="hover:bg-gray-50/50 transition-colors">
+                        <td className="px-4 py-3 font-semibold text-gray-900">{row.size}</td>
+                        <td className="px-4 py-3 text-gray-600">{row.chest}</td>
+                        <td className="px-4 py-3 text-gray-600">{row.length}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <button 
+                onClick={() => setShowSizeGuide(false)}
+                className="w-full mt-8 bg-gray-900 hover:bg-black text-white font-medium py-3 rounded-xl transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

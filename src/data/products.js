@@ -75,8 +75,14 @@ export const products = [
 
 export const categories = [
   "All",
-  "Tops",
-  "Bottoms",
-  "Outerwear",
-  "Activewear"
+  "T-Shirts",
+  "Shirts",
+  "Jeans",
+  "Trousers & Pants",
+  "Shorts",
+  "Hoodies & Sweatshirts",
+  "Jackets & Coats",
+  "Kurtas & Ethnic Wear",
+  "Tracksuits & Activewear",
+  "Suits & Blazers"
 ];

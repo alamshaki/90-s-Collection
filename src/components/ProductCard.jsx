@@ -17,28 +17,25 @@ const ProductCard = ({ product }) => {
             Trending
           </span>
         )}
-        
-        {/* Quick Add Overlay */}
-        <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-10 flex justify-center">
+        {/* Removed Quick Add Overlay from here */}
+      </Link>
+      
+      <div className="flex flex-col p-5 h-full">
+        <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{product.category}</span>
+        <Link to={`/product/${product.id}`} className="font-medium text-base text-gray-900 hover:text-primary transition-colors mb-2 truncate">
+          {product.name}
+        </Link>
+        <div className="flex flex-row items-center justify-between mt-auto gap-3">
+          <span className="font-bold text-lg text-gray-900">₹{parseFloat(product.price).toFixed(2)}</span>
           <button 
-            className="w-full bg-white text-gray-900 hover:bg-primary hover:text-white font-medium text-sm py-3 rounded-xl flex items-center justify-center gap-2 transition-colors duration-300 shadow-md"
+            className="flex-1 bg-primary text-white hover:bg-primary-hover font-medium text-sm py-2 rounded-xl flex items-center justify-center gap-1.5 transition-colors shadow-sm max-w-[120px]"
             onClick={(e) => {
               e.preventDefault();
               alert(`Added ${product.name} to cart!`);
             }}
           >
-            <ShoppingCart size={16} /> Quick Add
+            <ShoppingCart size={14} /> Buy Now
           </button>
-        </div>
-      </Link>
-      
-      <div className="flex flex-col p-5">
-        <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1.5">{product.category}</span>
-        <Link to={`/product/${product.id}`} className="font-medium text-base text-gray-900 hover:text-primary transition-colors mb-2 truncate">
-          {product.name}
-        </Link>
-        <div className="flex items-center justify-between mt-auto">
-          <span className="font-semibold text-lg text-gray-900">${product.price.toFixed(2)}</span>
         </div>
       </div>
     </div>
