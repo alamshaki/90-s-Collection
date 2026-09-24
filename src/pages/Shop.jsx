@@ -17,9 +17,17 @@ const Shop = () => {
   const [activeCategory, setActiveCategory] = useState(initialCategory);
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [priceRange, setPriceRange] = useState(10000);
+  const [selectedPriceRanges, setSelectedPriceRanges] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const priceRangeMap = {
+    'under-500': { min: 0, max: 499 },
+    '500-1000': { min: 500, max: 1000 },
+    '1000-2000': { min: 1001, max: 2000 },
+    '2000-5000': { min: 2001, max: 5000 },
+    'over-5000': { min: 5001, max: Infinity }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +46,15 @@ const Shop = () => {
   const filteredProducts = products.filter(product => {
     const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesPrice = product.price <= priceRange;
+    
+    let matchesPrice = true;
+    if (selectedPriceRanges.length > 0) {
+      matchesPrice = selectedPriceRanges.some(rangeId => {
+        const range = priceRangeMap[rangeId];
+        return product.price >= range.min && product.price <= range.max;
+      });
+    }
+    
     return matchesCategory && matchesSearch && matchesPrice;
   });
 
@@ -113,19 +129,41 @@ const Shop = () => {
             </div>
 
             <div className="mb-10 bg-white md:bg-transparent md:border-0 border border-gray-100 rounded-2xl md:rounded-none p-5 md:p-0 shadow-sm md:shadow-none">
-              <div className="flex justify-between items-center mb-5">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900">Price</h3>
-                <span className="text-sm font-medium text-primary">₹{priceRange}</span>
-              </div>
-              <input 
-                type="range" 
-                min="0" 
-                max="10000" 
-                step="100"
-                value={priceRange} 
-                onChange={(e) => setPriceRange(Number(e.target.value))}
-                className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
-              />
+              <h3 className="text-sm font-bold uppercase tracking-wider mb-5 text-gray-900">Price Range</h3>
+              <ul className="space-y-3">
+                {[
+                  { id: 'under-500', label: 'Under ₹500', min: 0, max: 499 },
+                  { id: '500-1000', label: '₹500 - ₹1000', min: 500, max: 1000 },
+                  { id: '1000-2000', label: '₹1000 - ₹2000', min: 1001, max: 2000 },
+                  { id: '2000-5000', label: '₹2000 - ₹5000', min: 2001, max: 5000 },
+                  { id: 'over-5000', label: 'Over ₹5000', min: 5001, max: Infinity }
+                ].map(range => (
+                  <li key={range.id}>
+                    <label className="flex items-center space-x-3 cursor-pointer group">
+                      <div className="relative flex items-center">
+                        <input 
+                          type="checkbox"
+                          className="peer appearance-none w-5 h-5 border-2 border-gray-200 rounded text-primary focus:ring-primary focus:ring-offset-0 checked:bg-primary checked:border-primary transition-colors cursor-pointer"
+                          checked={selectedPriceRanges.includes(range.id)}
+                          onChange={() => {
+                            if (selectedPriceRanges.includes(range.id)) {
+                              setSelectedPriceRanges(selectedPriceRanges.filter(id => id !== range.id));
+                            } else {
+                              setSelectedPriceRanges([...selectedPriceRanges, range.id]);
+                            }
+                          }}
+                        />
+                        <svg className="absolute w-3.5 h-3.5 text-white pointer-events-none opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span className={`text-sm font-medium transition-colors ${selectedPriceRanges.includes(range.id) ? 'text-primary' : 'text-gray-600 group-hover:text-gray-900'}`}>
+                        {range.label}
+                      </span>
+                    </label>
+                  </li>
+                ))}
+              </ul>
             </div>
           </aside>
 
@@ -165,7 +203,7 @@ const Shop = () => {
                   className="bg-gray-900 hover:bg-black text-white px-8 py-3 rounded-full font-medium transition-colors text-sm"
                   onClick={() => {
                     handleCategoryChange('All');
-                    setPriceRange(10000);
+                    setSelectedPriceRanges([]);
                     searchParams.delete('search');
                     setSearchParams(searchParams);
                   }}

@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import MyAccount from './pages/MyAccount';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
+import Wishlist from './pages/Wishlist';
 
 // Helper component to scroll to top on route change
 const ScrollToTopHelper = () => {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<MyAccount />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
       </Routes>
