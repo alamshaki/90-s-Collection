@@ -59,9 +59,9 @@ const Cart = () => {
             
             {/* Cart Items */}
             <div className="flex-1">
-              <div className="bg-white rounded-3xl shadow-sm border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-br from-[#0606d4]/10 to-[#0606d4]/5 backdrop-blur-md rounded-2xl shadow-sm border border-[#0606d4]/20 overflow-hidden">
                 {cartItems.map((item, index) => (
-                  <div key={item.id || index} className={`flex flex-col sm:flex-row gap-6 p-6 md:p-8 transition-colors hover:bg-gray-50 ${index !== cartItems.length - 1 ? 'border-b border-gray-100' : ''}`}>
+                  <div key={item.id || index} className={`flex flex-col sm:flex-row gap-6 p-6 md:p-8 transition-colors hover:bg-[#0606d4]/5 ${index !== cartItems.length - 1 ? 'border-b border-[#0606d4]/10' : ''}`}>
                     <div className="w-full sm:w-32 h-40 bg-gray-100 rounded-2xl flex-shrink-0 overflow-hidden">
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover mix-blend-multiply" />
                     </div>
