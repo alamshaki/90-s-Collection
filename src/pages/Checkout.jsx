@@ -41,7 +41,7 @@ const Checkout = () => {
   }
 
   return (
-    <div className="py-12 md:py-20 bg-gray-50 min-h-[calc(100vh-80px)]">
+    <div className="py-12 md:py-20 bg-transparent min-h-[calc(100vh-80px)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-gray-900 mb-10">
           Secure Checkout
@@ -171,16 +171,16 @@ const Checkout = () => {
           </div>
 
           <div className="w-full lg:w-[420px] flex-shrink-0">
-            <div className="bg-gray-900 text-white rounded-[24px] p-8 md:p-10 shadow-2xl sticky top-28 overflow-hidden">
-               <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -ml-20 -mt-20"></div>
+            <div className="bg-gradient-to-br from-[#0606d4]/10 to-[#0606d4]/5 text-gray-900 rounded-[24px] p-8 md:p-10 shadow-sm border border-[#0606d4]/20 sticky top-28 overflow-hidden">
+               <div className="absolute top-0 left-0 w-64 h-64 bg-white/40 rounded-full blur-3xl -ml-20 -mt-20 pointer-events-none"></div>
                
-               <h3 className="text-xl font-black uppercase tracking-wider mb-8 pb-6 border-b border-gray-700/50 relative z-10">
+               <h3 className="text-xl font-black uppercase tracking-wider mb-8 pb-6 border-b border-[#0606d4]/20 relative z-10 text-primary">
                  In Your Cart
                </h3>
                
                <div className="space-y-6 mb-8 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar relative z-10">
                  {cartItems.length === 0 ? (
-                   <p className="text-gray-400 text-sm">Your cart is empty.</p>
+                   <p className="text-gray-500 text-sm">Your cart is empty.</p>
                  ) : (
                    cartItems.map((item, idx) => (
                      <div key={item.id || idx} className="flex items-center gap-4 group">
@@ -188,32 +188,32 @@ const Checkout = () => {
                          <img src={item.image} alt={item.name} className="w-full h-full object-cover mix-blend-multiply" />
                        </div>
                        <div className="flex-1">
-                         <h4 className="font-bold text-sm leading-snug mb-1 text-gray-100 line-clamp-2">{item.name}</h4>
-                         <p className="text-xs text-gray-400 font-medium mb-1">Size: {item.size} • Qty: {item.quantity}</p>
-                         <p className="font-black text-white">₹{(item.price * item.quantity).toFixed(2)}</p>
+                         <h4 className="font-bold text-sm leading-snug mb-1 text-gray-800 line-clamp-2">{item.name}</h4>
+                         <p className="text-xs text-gray-500 font-medium mb-1">Size: {item.size} • Qty: {item.quantity}</p>
+                         <p className="font-black text-gray-900">₹{(item.price * item.quantity).toFixed(2)}</p>
                        </div>
                      </div>
                    ))
                  )}
                </div>
                
-                <div className="border-t border-gray-700/50 pt-6 space-y-4 relative z-10 text-gray-300">
+                <div className="border-t border-[#0606d4]/20 pt-6 space-y-4 relative z-10 text-gray-700">
                   <div className="flex justify-between text-sm">
                     <span className="font-medium">Subtotal</span>
-                    <span className="font-bold text-white">₹{subtotal.toFixed(2)}</span>
+                    <span className="font-bold text-gray-900">₹{subtotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="font-medium">Shipping</span>
-                    <span className="font-bold text-white">{shipping === 0 ? 'Free' : `₹${shipping.toFixed(2)}`}</span>
+                    <span className="font-bold text-gray-900">{shipping === 0 ? 'Free' : `₹${shipping.toFixed(2)}`}</span>
                   </div>
                 </div>
 
-                <div className="flex justify-between items-end pt-6 mt-6 border-t border-gray-700/50 relative z-10">
-                  <span className="text-lg font-medium text-gray-300 uppercase tracking-widest">Total</span>
-                  <span className="text-3xl font-black text-white">₹{total.toFixed(2)}</span>
+                <div className="flex justify-between items-end pt-6 mt-6 border-t border-[#0606d4]/20 relative z-10">
+                  <span className="text-sm font-medium text-gray-800 uppercase tracking-widest">Total</span>
+                  <span className="text-3xl font-black text-primary">₹{total.toFixed(2)}</span>
                 </div>
                 
-                <button type="submit" disabled={cartItems.length === 0} className="w-full mt-10 bg-white text-black hover:bg-gray-100 py-5 rounded-2xl font-black uppercase tracking-widest text-base transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:-translate-y-1 relative z-10 disabled:opacity-50 disabled:cursor-not-allowed">
+                <button type="submit" disabled={cartItems.length === 0} className="w-full mt-10 bg-primary text-white hover:bg-primary-hover py-4 rounded-xl font-bold uppercase tracking-widest text-sm transition-all shadow-md hover:shadow-lg hover:-translate-y-1 relative z-10 disabled:opacity-50 disabled:cursor-not-allowed">
                   Place Order Now
                 </button>
             </div>

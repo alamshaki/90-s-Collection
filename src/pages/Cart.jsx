@@ -45,11 +45,11 @@ const Cart = () => {
   const total = subtotal + shipping;
 
   return (
-    <div className="py-12 md:py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 min-h-[calc(100vh-80px)]">
+    <div className="py-12 md:py-20 bg-transparent min-h-[calc(100vh-80px)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4 mb-10">
-          <ShoppingBag size={32} className="text-black" />
-          <h1 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-gray-900">
+        <div className="flex items-center gap-3 mb-8">
+          <ShoppingBag size={24} className="text-primary" />
+          <h1 className="text-xl md:text-2xl font-bold uppercase tracking-tight text-gray-900">
             Shopping Cart
           </h1>
         </div>
@@ -94,42 +94,40 @@ const Cart = () => {
             </div>
 
             {/* Order Summary */}
-            <div className="w-full lg:w-[400px] flex-shrink-0">
-              <div className="bg-gray-900 text-white rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+            <div className="w-full lg:w-[350px] flex-shrink-0">
+              <div className="bg-gradient-to-br from-[#0606d4]/10 to-[#0606d4]/5 text-gray-900 rounded-2xl p-6 md:p-8 shadow-sm border border-[#0606d4]/20 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/40 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
                 
-                <h3 className="text-2xl font-black mb-8 relative z-10">
+                <h3 className="text-lg font-bold mb-6 relative z-10 text-primary">
                   Order Summary
                 </h3>
                 
-                <div className="space-y-4 mb-8 text-gray-300 relative z-10">
-                  <div className="flex justify-between items-center">
+                <div className="space-y-3 mb-6 relative z-10 text-sm">
+                  <div className="flex justify-between items-center text-gray-700">
                     <span className="font-medium">Subtotal</span>
-                    <span className="font-bold text-white text-lg">₹{subtotal.toFixed(2)}</span>
+                    <span className="font-bold text-gray-900">₹{subtotal.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center text-gray-700">
                     <span className="font-medium">Shipping</span>
-                    <span className="font-bold text-white text-lg">{shipping === 0 ? 'Free' : `₹${shipping.toFixed(2)}`}</span>
+                    <span className="font-bold text-gray-900">{shipping === 0 ? 'Free' : `₹${shipping.toFixed(2)}`}</span>
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-end py-6 border-t border-gray-700/50 mb-8 relative z-10">
-                  <span className="text-lg font-medium text-gray-300">Total</span>
+                <div className="flex justify-between items-end py-4 border-t border-[#0606d4]/20 mb-6 relative z-10">
+                  <span className="text-sm font-medium text-gray-800">Total</span>
                   <div className="text-right">
-                    <p className="text-xs text-gray-400 mb-1">Including GST</p>
-                    <span className="text-4xl font-black text-white">₹{total.toFixed(2)}</span>
+                    <span className="text-xl font-black text-primary">₹{total.toFixed(2)}</span>
                   </div>
                 </div>
 
-                <Link to="/checkout" className="group relative block w-full bg-white text-black rounded-2xl text-center py-4 font-black tracking-wide transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg overflow-hidden z-10">
+                <Link to="/checkout" className="group relative block w-full bg-primary text-white rounded-xl text-center py-3 text-sm font-bold tracking-wide transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 z-10 overflow-hidden">
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    Checkout Now <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    Checkout <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </span>
-                  <div className="absolute inset-0 bg-gray-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
                 </Link>
                 
-                <div className="text-center mt-6 relative z-10">
-                  <Link to="/shop" className="inline-flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                <div className="text-center mt-4 relative z-10">
+                  <Link to="/shop" className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-primary transition-colors">
                     Continue Shopping
                   </Link>
                 </div>
