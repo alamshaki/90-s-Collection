@@ -92,6 +92,41 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Promotional CTA Section */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-900 group">
+          <div className="absolute inset-0">
+            <img 
+              src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&q=80&w=1600" 
+              alt="Special Offer Background" 
+              className="w-full h-full object-cover opacity-40 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-gray-900/80 to-transparent"></div>
+          </div>
+          <div className="relative z-10 px-8 py-16 md:py-20 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="max-w-2xl text-center md:text-left">
+              <span className="inline-block py-1.5 px-4 rounded-full bg-white/20 text-white text-xs font-black tracking-widest uppercase mb-6 backdrop-blur-md border border-white/30 shadow-sm animate-pulse">
+                Limited Time Offer
+              </span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight drop-shadow-lg leading-tight">
+                Unlock <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-white">25% Off</span> Your Style
+              </h2>
+              <p className="text-gray-300 text-lg md:text-xl font-medium leading-relaxed mb-0">
+                Upgrade your wardrobe with our latest 90's streetwear collection. Use code <span className="text-black font-extrabold bg-white px-3 py-1 rounded-md shadow-sm ml-1 inline-block transform -rotate-2">VINTAGE25</span> at checkout.
+              </p>
+            </div>
+            <div className="flex-shrink-0 w-full md:w-auto mt-4 md:mt-0">
+              <Link to="/shop" className="group relative w-full md:w-auto inline-flex items-center justify-center bg-white text-black px-10 py-5 rounded-full font-black text-lg transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:-translate-y-1 overflow-hidden">
+                <span className="relative z-10 flex items-center gap-3 uppercase tracking-wide">
+                  Claim Offer <ArrowRight size={22} className="group-hover:translate-x-1.5 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gray-200 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Categories Section */}
       <section className="py-24 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
