@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <>
     <header className="sticky top-0 z-50 w-full glass-panel border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-2">
         <div className="flex justify-center md:justify-between items-center h-16 md:h-20">
           
           {/* Logo and Mobile Hamburger Menu */}
