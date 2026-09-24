@@ -94,33 +94,36 @@ const Home = () => {
 
       {/* Promotional CTA Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-900 group">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-950 via-purple-900 to-indigo-900 group shadow-[0_20px_50px_rgba(8,_112,_184,_0.2)] border border-indigo-500/20">
           <div className="absolute inset-0">
-            <img 
-              src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&q=80&w=1600" 
-              alt="Special Offer Background" 
-              className="w-full h-full object-cover opacity-40 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-gray-900/80 to-transparent"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-fuchsia-500 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
           </div>
-          <div className="relative z-10 px-8 py-16 md:py-20 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="max-w-2xl text-center md:text-left">
-              <span className="inline-block py-1.5 px-4 rounded-full bg-white/20 text-white text-xs font-black tracking-widest uppercase mb-6 backdrop-blur-md border border-white/30 shadow-sm animate-pulse">
+          
+          <div className="relative z-10 px-8 py-10 md:py-12 md:px-12 flex flex-col md:flex-row items-center justify-between gap-8 bg-black/10 backdrop-blur-sm">
+            <div className="max-w-xl text-center md:text-left flex flex-col items-center md:items-start">
+              <span className="inline-flex items-center gap-1.5 py-1 px-3 rounded-full bg-white/10 text-white text-[10px] font-black tracking-[0.2em] uppercase mb-4 backdrop-blur-md border border-white/20 shadow-sm relative overflow-hidden">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
                 Limited Time Offer
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight drop-shadow-lg leading-tight">
-                Unlock <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-white">25% Off</span> Your Style
+              
+              <h2 className="text-2xl md:text-3xl font-black text-white mb-3 tracking-tight drop-shadow-md">
+                Unlock <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-400">25% Off</span> Your Style
               </h2>
-              <p className="text-gray-300 text-lg md:text-xl font-medium leading-relaxed mb-0">
-                Upgrade your wardrobe with our latest 90's streetwear collection. Use code <span className="text-black font-extrabold bg-white px-3 py-1 rounded-md shadow-sm ml-1 inline-block transform -rotate-2">VINTAGE25</span> at checkout.
+              
+              <p className="text-gray-300 text-sm font-medium leading-relaxed mb-0 max-w-md">
+                Upgrade your wardrobe with our latest streetwear collection. Use code <span className="text-white font-extrabold bg-white/10 border border-white/20 px-2 py-0.5 rounded shadow-sm mx-1">VINTAGE25</span> at checkout.
               </p>
             </div>
-            <div className="flex-shrink-0 w-full md:w-auto mt-4 md:mt-0">
-              <Link to="/shop" className="group relative w-full md:w-auto inline-flex items-center justify-center bg-white text-black px-10 py-5 rounded-full font-black text-lg transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:-translate-y-1 overflow-hidden">
-                <span className="relative z-10 flex items-center gap-3 uppercase tracking-wide">
-                  Claim Offer <ArrowRight size={22} className="group-hover:translate-x-1.5 transition-transform" />
+            
+            <div className="flex-shrink-0 w-full md:w-auto">
+              <Link to="/shop" className="group relative w-full md:w-auto inline-flex items-center justify-center bg-white text-gray-900 px-8 py-3.5 rounded-xl font-bold text-sm transition-all shadow-lg hover:shadow-cyan-500/25 hover:-translate-y-1 overflow-hidden">
+                <span className="relative z-10 flex items-center gap-2 uppercase tracking-wider">
+                  Claim Offer <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </span>
-                <div className="absolute inset-0 bg-gray-200 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-100 to-fuchsia-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
               </Link>
             </div>
           </div>
